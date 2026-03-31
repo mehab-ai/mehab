@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MEHAB</title>
+
 <style>
 body {
-font-family: Arial;
+font-family: Arial, sans-serif;
 background: #0f172a;
 color: white;
 text-align: center;
 padding-top: 50px;
+margin: 0;
 }
 
 .container {
@@ -21,9 +25,10 @@ margin: auto;
 
 input {
 padding: 12px;
-width: 400px;
+width: 80%;
 border-radius: 8px;
 border: none;
+margin-top: 10px;
 }
 
 button {
@@ -33,6 +38,11 @@ border: none;
 border-radius: 8px;
 color: white;
 cursor: pointer;
+margin-top: 15px;
+}
+
+button:hover {
+background: #16a34a;
 }
 
 .result {
@@ -40,9 +50,10 @@ margin-top: 30px;
 background: #0f172a;
 padding: 20px;
 border-radius: 10px;
-display:none;
+display: none;
 }
 </style>
+
 </head>
 
 <body>
@@ -52,20 +63,21 @@ display:none;
 <p>SEO & Competitor Intelligence</p>
 
 <input id="website" placeholder="Enter Website URL" />
-<br><br>
+<br>
+
 <button onclick="analyze()">Analyze</button>
 
 <div class="result" id="result">
 <h3>SEO Score: 78%</h3>
 <p>Keywords: transport, employee transport, cab services</p>
-<p>Competitor: eurocab.in, ecosmobility.com</p>
+<p>Competitors: eurocab.in, ecosmobility.com</p>
 </div>
 
 </div>
 
 <script>
-function analyze(){
-document.getElementById("result").style.display="block";
+function analyze() {
+document.getElementById("result").style.display = "block";
 }
 </script>
 
