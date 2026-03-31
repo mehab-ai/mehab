@@ -1,98 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEHAB</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEHAB - SEO Intelligence</title>
 
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-font-family: Arial, sans-serif;
-background: #0f172a;
-color: white;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-.container {
-background: #1e293b;
-padding: 40px;
-border-radius: 12px;
-text-align: center;
-width: 500px;
-}
+        .container {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
 
-h1 {
-margin-bottom: 10px;
-}
+        h1 {
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
 
-p {
-margin-bottom: 20px;
-color: #cbd5e1;
-}
+        p.subtitle {
+            margin-bottom: 20px;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
 
-input {
-width: 100%;
-padding: 12px;
-border-radius: 8px;
-border: none;
-margin-bottom: 15px;
-}
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            margin-bottom: 15px;
+            outline: none;
+            transition: border 0.3s;
+        }
 
-button {
-background: #22c55e;
-color: white;
-border: none;
-padding: 12px 20px;
-border-radius: 8px;
-cursor: pointer;
-}
+        input:focus {
+            border: 2px solid #22c55e;
+        }
 
-button:hover {
-background: #16a34a;
-}
+        button {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s;
+        }
 
-.result {
-margin-top: 20px;
-padding: 20px;
-background: #0f172a;
-border-radius: 8px;
-display: none;
-}
-</style>
+        button:hover {
+            background: #16a34a;
+        }
 
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #0f172a;
+            border-radius: 8px;
+            display: none;
+            text-align: left;
+            border-left: 4px solid #22c55e;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result h3 { color: #22c55e; margin-bottom: 10px; }
+        .result p { font-size: 0.85rem; margin-bottom: 5px; color: #94a3b8; }
+        .result span { color: white; font-weight: bold; }
+    </style>
 </head>
-
 <body>
 
 <div class="container">
-<h1>MEHAB</h1>
-<p>SEO & Competitor Intelligence</p>
+    <h1>MEHAB</h1>
+    <p class="subtitle">SEO & Competitor Intelligence</p>
 
-<input id="website" type="text" placeholder="Enter website URL">
+    <input id="website" type="text" placeholder="https://example.com" onkeypress="handleKeyPress(event)">
 
-<button onclick="analyze()">Analyze</button>
+    <button onclick="analyze()">Analyze Website</button>
 
-<div class="result" id="result">
-<h3>SEO Score: 78%</h3>
-<p>Keywords: transport, employee transport, cab services</p>
-<p>Competitors: eurocab.in, ecosmobility.com</p>
-</div>
-
+    <div class="result" id="result">
+        <h3 id="resScore">SEO Score: 78%</h3>
+        <p>Targeting: <span id="resUrl">website.com</span></p>
+        <p>Keywords: <span>transport, employee transport, cab services</span></p>
+        <p>Competitors: <span>eurocab.in, ecosmobility.com</span></p>
+    </div>
 </div>
 
 <script>
-function analyze() {
-document.getElementById("result").style.display = "block";
-}
+    function analyze() {
+        const urlInput = document.getElementById("website").value.trim();
+        const resultDiv = document.getElementById("result");
+        
+        if (urlInput === "") {
+            alert("Please enter a valid URL");
+            return;
+        }
+
+        // Simulating a dynamic update
+        document.getElementById("resUrl").innerText = urlInput;
+        
+        // Show result
+        resultDiv.style.display = "block";
+    }
+
+    // Allows pressing "Enter" to trigger the button
+    function handleKeyPress(e) {
+        if (e.key === "Enter") {
+            analyze();
+        }
+    }
 </script>
 
 </body>
